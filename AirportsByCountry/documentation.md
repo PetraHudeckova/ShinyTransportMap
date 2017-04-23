@@ -3,7 +3,7 @@ Introduction
 
 This is a application to show global airports, trains stations and
 ports. The data is from
-<https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports-extended.dat>.
+[https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports-extended.dat](openflights).
 Each row contains information about name, city, country, type (airport,
 train station, port or unknown), latitude and longitude.
 
@@ -17,5 +17,10 @@ output in table.
 
 On the right side is a leaflet map with marked locations and optionally
 table output.
+
+Source code is available on
+<https://github.com/PetraHudeckova/ShinyTransportMap>.
+
+Presentation is on <http://rpubs.com/Petra/ShinyTransportApp>.
 
 Thanks for using this application.

@@ -8,12 +8,13 @@
 #
 
 library(shiny)
+library(leaflet)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Global Transport Map"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(

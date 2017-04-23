@@ -39,15 +39,15 @@ shinyServer(function(input, output) {
     radioButtons("selectedType", "Select type", as.list(typeNames))
   })
   
-  # selector for ui.R
+  # country selector for ui.R
   countryNames <- c("All countries", unique(data[,country]))
   output$countrySelector <- renderUI({
     selectInput("selectedCountry", "Select country:", as.list(countryNames)) 
   })
   
   # data used for further computation and map
+  # takes data from selectedCountry() and selectedType()
   usedData <- reactive({
-    
     countryNullOrAll <- selectedCountry() == "All countries" || is.null(selectedCountry())
     typeNullOrAll <- selectedType() == "all types" || is.null(selectedType())
     
@@ -62,14 +62,13 @@ shinyServer(function(input, output) {
     }
   })
   
-  # leaflet map
+  # leaflet map with locations
   mapPlot <- reactive({
     usedData() %>%
       leaflet() %>%
       addTiles() %>%
       addMarkers(popup=usedData()$name, lng=~lng, lat=~lat, clusterOptions = markerClusterOptions())
   })
-  
   output$mapPlot <- renderLeaflet({
     mapPlot()
   })
@@ -88,11 +87,11 @@ shinyServer(function(input, output) {
     }
   })
   
+  # show data table
   output$table <- renderDataTable({
     if (input$showTable) {
       usedData()[, .(city, name, country, type) ]
     }
   })
-  
   
 })
